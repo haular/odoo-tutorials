@@ -9,9 +9,15 @@
                     <button class="btn btn-primary" type="button" t-on-click="customerSaleOrderAction">Last 7 días</button>
                     <button class="btn btn-primary" type="button" t-on-click="customerSaleOrderCancelAction">Last 7 días - cancel</button>
                 </t>
-                <Card>
-                    <t t-set-slot="title">Number of new orders this month</t>
-                </Card>
+
+                <t t-foreach="statistics" t-as="stat" t-key="stat.id">
+                    <Card>
+                        <t t-set-slot="title"><t t-esc="stat.text"/></t>
+                        <!--<div slot="content">
+                            <p t-esc="stat.value"/>
+                        </div>-->
+                    </Card>
+                </t>
             </Layout>
         </div>
     </t>
