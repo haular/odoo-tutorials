@@ -115,7 +115,7 @@
     </record>
 
     <record model="ir.actions.client" id="dashboard">
-      <field name="name">Dashboard</field>
+      <field name="name">Dashboardsss</field>
       <field name="tag">awesome_tshirt.dashboard</field>
     </record>
 

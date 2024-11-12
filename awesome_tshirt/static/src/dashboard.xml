@@ -2,7 +2,22 @@
 <templates xml:space="preserve">
 
     <t t-name="awesome_tshirt.clientaction" owl="1">
+        <div class="o_action">
+            <Layout display="{ controlPanel: { 'top-right' : false, 'bottom-right': false } }">
+                <t t-set-slot="layout-buttons">
+                    <button class="btn btn-primary" type="button" t-on-click="customerKabanAction">Customer</button>
+                    <button class="btn btn-primary" type="button" t-on-click="customerSaleOrderAction">Last 7 días</button>
+                    <button class="btn btn-primary" type="button" t-on-click="customerSaleOrderCancelAction">Last 7 días - cancel</button>
+                </t>
 
+                <t t-foreach="statistics" t-as="stat" t-key="stat.id">
+                    <Card>
+                        <t t-set-slot="title"><t t-esc="stat.text"/></t>
+                        <p t-esc="stat.value"/>
+                    </Card>
+                </t>
+            </Layout>
+        </div>
     </t>
 
 </templates>
