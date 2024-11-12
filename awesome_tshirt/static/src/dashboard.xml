@@ -13,9 +13,7 @@
                 <t t-foreach="statistics" t-as="stat" t-key="stat.id">
                     <Card>
                         <t t-set-slot="title"><t t-esc="stat.text"/></t>
-                        <!--<div slot="content">
-                            <p t-esc="stat.value"/>
-                        </div>-->
+                        <p t-esc="stat.value"/>
                     </Card>
                 </t>
             </Layout>

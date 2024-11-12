@@ -26,11 +26,11 @@ class AwesomeDashboard extends Component {
             let id = 1
             const result = await this.rpc("/awesome_tshirt/statistics", {});
             for (const key in statisticsText) {
-                this.statistics[key] = {
+                this.statistics.push({
                     id: id++,
                     value: result[key],
                     text: statisticsText[key]
-                }
+                })
             }
             console.log(id)
         });
@@ -43,7 +43,7 @@ class AwesomeDashboard extends Component {
         });
 
         this.display = {controlPanel: {"top-right": false, "bottom-right": false}}
-        this.statistics = {}
+        this.statistics = []
     }
 
     customerKabanAction() {
