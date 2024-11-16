@@ -6,16 +6,19 @@
             <Layout display="{ controlPanel: { 'top-right' : false, 'bottom-right': false } }">
                 <t t-set-slot="layout-buttons">
                     <button class="btn btn-primary" type="button" t-on-click="customerKabanAction">Customer</button>
-                    <button class="btn btn-primary" type="button" t-on-click="customerSaleOrderAction">Last 7 días</button>
+                    <button class="btn btn-primary" type="button"
+                            t-on-click="customerSaleOrderAction">Last 7 días</button>
                     <button class="btn btn-primary" type="button" t-on-click="customerSaleOrderCancelAction">Last 7 días - cancel</button>
                 </t>
-
-                <t t-foreach="statistics" t-as="stat" t-key="stat.id">
+                <div class="d-inline-flex">
+                    <t t-foreach="statistics" t-as="stat" t-key="stat.id">
                     <Card>
                         <t t-set-slot="title"><t t-esc="stat.text"/></t>
                         <p t-esc="stat.value"/>
                     </Card>
-                </t>
+                    </t>
+                </div>
+                <Piechart/>
             </Layout>
         </div>
     </t>

@@ -7,6 +7,7 @@ import {Layout} from "@web/search/layout";
 import {useService} from "@web/core/utils/hooks";
 import {Domain} from "@web/core/domain";
 import {Card} from "./card/card";
+import {Piechart} from "./pie_chart/pie_chart";
 
 
 class AwesomeDashboard extends Component {
@@ -23,8 +24,12 @@ class AwesomeDashboard extends Component {
         }
 
         onWillStart(async () => {
+            await loadJS('/web/static/lib/Chart/Chart.js')
+
             let id = 1
+
             let result = await this.statistics_service.loadStatistics();
+
             for (const key in statisticsText) {
                 this.statistics.push({
                     id: id++,
@@ -32,7 +37,12 @@ class AwesomeDashboard extends Component {
                     text: statisticsText[key]
                 })
             }
-            console.log(id)
+
+            /*this.myPieChart = new Chart(ctx, {
+                type: 'pie',
+                data: data,
+                options: options
+            });*/
         });
 
         useSubEnv({
@@ -72,7 +82,7 @@ class AwesomeDashboard extends Component {
     }
 }
 
-AwesomeDashboard.components = {Layout, Card};
+AwesomeDashboard.components = {Layout, Card, Piechart};
 AwesomeDashboard.template = "awesome_tshirt.clientaction";
 
 registry.category("actions").add("awesome_tshirt.dashboard", AwesomeDashboard);

@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <templates xml:space="preserve">
-<t t-name="owl_playground.card" owl="1">
+<t t-name="owl_playground.pie_chart" owl="1">
     <div class="card m-2" style="width: 18rem;">
             <div class="card-body">
-                <h5 class="card-title">
-                    <t t-slot="title">Card title</t>
-                </h5>
-                <t t-slot="default"/>
+                 <canvas t-ref="canvas_ref"/>
             </div>
     </div>
 </t>
