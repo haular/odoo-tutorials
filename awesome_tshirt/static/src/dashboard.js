@@ -13,7 +13,7 @@ class AwesomeDashboard extends Component {
     setup() {
         this.action = useService("action");
         this.rpc = useService("rpc");
-
+        this.statistics_service = useService("awesome_tshirt.statistics");
         const statisticsText = {
             average_quantity: 'Average amount of t-shirt by order this month',
             average_time: 'Average time for an order to go from ‘new’ to ‘sent’ or ‘cancelled’',
@@ -24,7 +24,7 @@ class AwesomeDashboard extends Component {
 
         onWillStart(async () => {
             let id = 1
-            const result = await this.rpc("/awesome_tshirt/statistics", {});
+            let result = await this.statistics_service.loadStatistics();
             for (const key in statisticsText) {
                 this.statistics.push({
                     id: id++,
