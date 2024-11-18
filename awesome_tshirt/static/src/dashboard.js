@@ -24,12 +24,8 @@ class AwesomeDashboard extends Component {
         }
 
         onWillStart(async () => {
-            await loadJS('/web/static/lib/Chart/Chart.js')
-
             let id = 1
-
             let result = await this.statistics_service.loadStatistics();
-
             for (const key in statisticsText) {
                 this.statistics.push({
                     id: id++,
@@ -37,12 +33,6 @@ class AwesomeDashboard extends Component {
                     text: statisticsText[key]
                 })
             }
-
-            /*this.myPieChart = new Chart(ctx, {
-                type: 'pie',
-                data: data,
-                options: options
-            });*/
         });
 
         useSubEnv({
